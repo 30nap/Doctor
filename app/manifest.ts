@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { doctor } from "@/data/doctor";
 import { site } from "@/data/site";
+import { withBasePath } from "@/lib/utils";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -9,10 +10,12 @@ export default function manifest(): MetadataRoute.Manifest {
     description: site.seo.description,
     lang: "fa-IR",
     dir: "rtl",
-    start_url: "/",
+    start_url: withBasePath("/"),
     display: "standalone",
     background_color: "#f7f5f1",
     theme_color: "#2e6b5e",
-    icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
+    icons: [{ src: withBasePath("/icon.svg"), sizes: "any", type: "image/svg+xml" }],
   };
 }
+
+export const dynamic = "force-static";

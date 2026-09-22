@@ -71,3 +71,11 @@ hooks/        تشخیص بخش فعال و اسکرول
 - انیمیشن‌ها فقط fade-up ملایم هستند و تنظیم `prefers-reduced-motion` کاربر رعایت می‌شود.
 - اهداف لمسی حداقل ۴۴–۴۸ پیکسل، اندازه پایه متن ۱۷px، لینک «رفتن به محتوای اصلی» و ساختار heading صحیح (یک `h1`).
 - قبل از انتشار `site.url` را به دامنه واقعی تغییر دهید (canonical، sitemap و schema به آن وابسته‌اند).
+
+## انتشار روی GitHub Pages
+
+- آدرس: https://30nap.github.io/Doctor/
+- با هر push، workflow `.github/workflows/deploy-pages.yml` سایت را به‌صورت static می‌سازد و در branch `gh-pages` منتشر می‌کند.
+- تنظیم یک‌باره: Settings → Pages → Source: *Deploy from a branch* → Branch: `gh-pages` / `(root)`.
+- ساخت محلی نسخه Pages: `npm run build:pages` (خروجی در `out/`).
+- اگر نام repo یا دامنه عوض شد، `site.url` در `data/site.ts` را هم به‌روز کنید.

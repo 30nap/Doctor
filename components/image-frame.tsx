@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 import type { ImageAsset } from "@/data/types";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 
 type ImageFrameProps = {
   image: ImageAsset;
@@ -22,7 +22,7 @@ export function ImageFrame({ image, placeholderLabel, className, sizes, priority
     <div className={cn("relative overflow-hidden", className)}>
       {image.src ? (
         <Image
-          src={image.src}
+          src={withBasePath(image.src)}
           alt={image.alt}
           fill
           sizes={sizes ?? "(min-width: 768px) 50vw, 100vw"}

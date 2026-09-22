@@ -3,7 +3,7 @@
  */
 export const site = {
   /** Final production domain — used for canonical URLs, sitemap and schema. */
-  url: "https://example.com",
+  url: "https://30nap.github.io/Doctor",
   locale: "fa_IR",
 
   seo: {

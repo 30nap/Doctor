@@ -21,3 +21,9 @@ const faDigits = "۰۱۲۳۴۵۶۷۸۹";
 export function toFaDigits(input: string | number): string {
   return String(input).replace(/\d/g, (d) => faDigits[Number(d)]);
 }
+
+/** Prefixes a /public asset path with the deploy base path (e.g. GitHub Pages sub-path). */
+export function withBasePath(path: string): string {
+  if (!path.startsWith("/")) return path;
+  return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+}
