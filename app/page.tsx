@@ -2,7 +2,6 @@ import { site } from "@/data/site";
 import { MobileCtaBar } from "@/components/mobile-cta-bar";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { About } from "@/sections/about";
 import { Cases } from "@/sections/cases";
 import { Contact } from "@/sections/contact";
 import { Credentials } from "@/sections/credentials";
@@ -17,7 +16,6 @@ export default function HomePage() {
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
         {site.features.credentials && <Credentials />}
-        <About />
         <Services />
         <Resume />
         <Cases />

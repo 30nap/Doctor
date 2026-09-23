@@ -29,7 +29,7 @@ export const site = {
   /** Turn whole sections on or off without touching components. */
   features: {
     credentials: true,
-    cases: true,
+    cases: false,
     mobileCtaBar: true,
   },
 } as const;

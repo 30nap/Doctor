@@ -15,12 +15,6 @@ export const fa = {
     portraitPlaceholder: "جای تصویر پرتره",
   },
   credentials: { heading: "خلاصه سوابق" },
-  about: {
-    eyebrow: "درباره من",
-    education: "تحصیلات و مدارک",
-    certifications: "گواهی‌ها",
-    interests: "علایق حرفه‌ای",
-  },
   services: {
     eyebrow: "خدمات",
     heading: "آنچه در مطب انجام می‌دهم",

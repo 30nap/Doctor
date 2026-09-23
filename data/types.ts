@@ -43,8 +43,8 @@ export type TimelineItem = {
   id: string;
   category: TimelineCategory;
   title: string;
-  place: string;
-  period: string;
+  place?: string;
+  period?: string;
   description?: string;
 };
 

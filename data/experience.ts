@@ -34,9 +34,6 @@ export const timeline: TimelineItem[] = [
     id: "edu-dds",
     category: "education",
     title: "دکترای حرفه‌ای دندانپزشکی",
-    place: "[نام دانشگاه]",
-    period: "[سال] — [سال]",
-    description: "[عنوان پایان‌نامه یا نکته قابل‌ذکر — اختیاری.]",
   },
   {
     id: "course-1",

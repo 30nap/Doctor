@@ -80,13 +80,13 @@ export function Resume() {
                     <Icon className="size-4" />
                   </span>
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span className="text-sm text-muted">{item.period}</span>
+                    {item.period && <span className="text-sm text-muted">{item.period}</span>}
                     <span className="rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-medium text-primary">
                       {timelineCategories[item.category]}
                     </span>
                   </div>
                   <h3 className="mt-2 text-lg font-semibold text-ink">{item.title}</h3>
-                  <p className="text-ink-soft">{item.place}</p>
+                  {item.place && <p className="text-ink-soft">{item.place}</p>}
                   {item.description && <p className="mt-2 text-[0.95rem] text-muted">{item.description}</p>}
                 </m.li>
               );

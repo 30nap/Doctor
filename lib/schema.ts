@@ -24,7 +24,6 @@ export function buildJsonLd() {
     postalCode: real(contact.address.postalCode),
   };
 
-  const university = real(doctor.about.facts.find((f) => f.label === "دانشگاه")?.value);
   const sameAs = [real(contact.instagramHandle) ? contact.instagramUrl : undefined].filter(Boolean);
 
   return {
@@ -39,7 +38,6 @@ export function buildJsonLd() {
         description: doctor.intro,
         url: site.url,
         image: doctor.portrait.src ? `${site.url}${doctor.portrait.src}` : undefined,
-        alumniOf: university ? { "@type": "CollegeOrUniversity", name: university } : undefined,
         worksFor: { "@id": practiceId },
         sameAs: sameAs.length ? sameAs : undefined,
       },

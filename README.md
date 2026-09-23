@@ -18,7 +18,7 @@ npm run build && npm start
 
 | فایل | محتوا |
 | --- | --- |
-| `data/doctor.ts` | نام، عنوان، معرفی، پرتره، ردیف اعتبارها، بخش «درباره من» و فلسفه درمان |
+| `data/doctor.ts` | نام، عنوان، معرفی، پرتره و ردیف اعتبارها |
 | `data/services.ts` | کارت‌های خدمات (آیکون، عنوان، توضیح کوتاه، جزئیات اختیاری) |
 | `data/experience.ts` | تایم‌لاین سوابق (تحصیلات، کار، دوره، گواهی، افتخارات) |
 | `data/contact.ts` | تلفن، واتساپ، اینستاگرام، ایمیل، آدرس، ساعات کاری، لینک‌های مسیریابی و لینک نوبت‌دهی |
@@ -43,14 +43,14 @@ npm run build && npm start
 در `data/site.ts`:
 
 ```ts
-features: { credentials: true, cases: false, mobileCtaBar: true }
+features: { credentials: true, cases: false, mobileCtaBar: true } // نمونه درمان‌ها فعلاً خاموش است
 ```
 
 ## ساختار
 
 ```
 app/          layout (فونت، متادیتا، JSON-LD)، page، sitemap، robots، manifest
-sections/     Hero، Credentials، About، Services، Resume، Cases، Contact
+sections/     Hero، Credentials، Services، Resume، Cases (غیرفعال)، Contact
 components/   Header، MobileNav، Footer، MobileCtaBar، ImageFrame، Reveal، ui/ (Button، Dialog)
 data/         تمام محتوای قابل ویرایش
 i18n/         تنظیمات زبان و دیکشنری متن‌های رابط
