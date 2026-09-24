@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,14607,e=>{"use strict";var t=e.i(71645),i=e.i(47163);e.s(["RedirectHome",0,function(){return(0,t.useEffect)(()=>{window.location.replace((0,i.withBasePath)("/"))},[]),null}])}]);
