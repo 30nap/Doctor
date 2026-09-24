@@ -1,5 +1,5 @@
 import { Link2, Mail, MapPin, Phone, Send } from "lucide-react";
-import { contact, fullAddress, socialLinks } from "@/data/contact";
+import { contact, socialLinks } from "@/data/contact";
 import { doctor } from "@/data/doctor";
 import { mainNav } from "@/data/navigation";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons/brand-icons";
@@ -30,7 +30,7 @@ export function SiteFooter() {
                 <li key={link.id}>
                   <a
                     href={link.href}
-                    target={link.id === "email" ? undefined : "_blank"}
+                    target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
                     className="grid size-11 place-items-center rounded-full bg-canvas/8 text-canvas/80 ring-1 ring-canvas/10 transition-colors hover:bg-canvas hover:text-ink"
@@ -68,13 +68,19 @@ export function SiteFooter() {
               </a>
             </li>
             <li className="flex items-center gap-3">
-              <Mail className="size-4 shrink-0 text-canvas/50" aria-hidden />
-              <span className="ltr">{contact.email}</span>
+              <InstagramIcon className="size-4 shrink-0 text-canvas/50" />
+              <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="ltr hover:text-canvas">
+                @{contact.instagramHandle}
+              </a>
             </li>
-            <li className="flex items-start gap-3">
-              <MapPin className="mt-1.5 size-4 shrink-0 text-canvas/50" aria-hidden />
-              <span>{fullAddress}</span>
-            </li>
+            {contact.locations.map((location) => (
+              <li key={location.name} className="flex items-start gap-3">
+                <MapPin className="mt-1.5 size-4 shrink-0 text-canvas/50" aria-hidden />
+                <span>
+                  {location.name} ({location.area})
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

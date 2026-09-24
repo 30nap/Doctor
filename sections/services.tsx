@@ -19,7 +19,7 @@ export function Services() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <ul className="mt-12 grid gap-px overflow-hidden rounded-4xl bg-line ring-1 ring-line sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-12 grid gap-px overflow-hidden rounded-4xl bg-line ring-1 ring-line sm:grid-cols-2 lg:grid-cols-5 sm:[&>li:last-child:nth-child(odd)]:col-span-2 lg:[&>li:last-child:nth-child(odd)]:col-span-1">
             {services.map((service) => (
               <ServiceItem key={service.id} service={service} />
             ))}

@@ -12,9 +12,9 @@ export const doctor = {
   initials: "ا ف",
   title: "دندانپزشک",
   specialty: "دندانپزشکی عمومی",
-  city: "[شهر]",
+  city: "تهران",
   /** Medical council number (شماره نظام پزشکی). */
-  licenseNumber: "[شماره نظام پزشکی]",
+  licenseNumber: "۱۹۳۸۲۸",
 
   intro:
     "باور دارم درمان خوب از گفت‌وگوی روشن شروع می‌شود؛ با حوصله توضیح می‌دهم، دقیق درمان می‌کنم و کنار شما می‌مانم تا لبخندی سالم و ماندگار داشته باشید.",
@@ -26,9 +26,9 @@ export const doctor = {
 
   /** Compact trust row under the hero. Keep 3–4 items. */
   credentials: [
-    { value: "[—] سال", label: "سابقه فعالیت" },
-    { value: "[مدرک]", label: "دکترای حرفه‌ای دندانپزشکی" },
-    { value: "[—]", label: "عضو نظام پزشکی" },
-    { value: "[—]+", label: "بیمار راضی" },
+    { value: "۶ سال", label: "سابقه فعالیت" },
+    { value: "دکتری عمومی", label: "مدرک دندانپزشکی" },
+    { value: "۱۹۳۸۲۸", label: "شماره نظام پزشکی" },
+    { value: "۲۲۰۰+", label: "بیمار" },
   ] as Credential[],
 };

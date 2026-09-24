@@ -1,4 +1,5 @@
 import {
+  Baby,
   BrushCleaning,
   Crown,
   MessageCircleHeart,
@@ -7,6 +8,7 @@ import {
   Smile,
   Sparkles,
   Stethoscope,
+  Syringe,
   type LucideIcon,
 } from "lucide-react";
 import { ToothIcon } from "./brand-icons";
@@ -22,6 +24,8 @@ export const serviceIcons = {
   crown: Crown,
   prevention: ShieldCheck,
   care: MessageCircleHeart,
+  surgery: Syringe,
+  pediatric: Baby,
 } satisfies Record<string, LucideIcon | typeof ToothIcon>;
 
 export type ServiceIconName = keyof typeof serviceIcons;

@@ -56,15 +56,12 @@ export type CaseStudy = {
   after: ImageAsset;
 };
 
-export type WorkingHour = {
-  days: string;
-  hours: string;
-  closed?: boolean;
-};
-
-export type MapLink = {
-  label: string;
-  href: string;
+export type ClinicLocation = {
+  name: string;
+  /** Neighbourhood / area within the city. */
+  area: string;
+  /** Link to the clinic on a map app. */
+  mapHref: string;
 };
 
 export type SocialLink = {

@@ -1,44 +1,44 @@
-import type { MapLink, SocialLink, WorkingHour } from "./types";
+import type { ClinicLocation, SocialLink } from "./types";
 
 /**
- * Contact & clinic information. Replace all [bracketed] values.
+ * Contact & clinic information.
  * `phoneHref` / `whatsappNumber` must be in international format without spaces.
  */
 export const contact = {
-  clinicName: "[نام کلینیک یا مطب]",
+  /** Work line — used for calls and WhatsApp. */
+  phone: "۰۹۳۳ ۱۹۰ ۸۱۷۳",
+  phoneHref: "tel:+989331908173",
+  whatsappNumber: "989331908173",
 
-  phone: "[۰۲۱ ۰۰۰۰ ۰۰۰۰]",
-  phoneHref: "tel:+982100000000",
+  instagramHandle: "dr_amir_fazlollahi",
+  instagramUrl: "https://instagram.com/dr_amir_fazlollahi",
 
-  mobile: "[۰۹۱۲ ۰۰۰ ۰۰۰۰]",
-  whatsappNumber: "989120000000",
+  city: "تهران",
+  region: "تهران",
 
-  email: "[email@example.com]",
-  instagramHandle: "[instagram_handle]",
-  instagramUrl: "https://instagram.com/",
+  /**
+   * Clinics where the doctor works. `mapHref` currently opens a Google Maps
+   * search — replace it with the clinic's exact pin link when available.
+   */
+  locations: [
+    {
+      name: "درمانگاه نبوی",
+      area: "شهر ری",
+      mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("درمانگاه نبوی شهر ری تهران"),
+    },
+    {
+      name: "کلینیک نسیم",
+      area: "قیطریه",
+      mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("کلینیک نسیم قیطریه تهران"),
+    },
+    {
+      name: "کلینیک تخصصی دنو",
+      area: "اندرزگو",
+      mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("کلینیک تخصصی دنو اندرزگو تهران"),
+    },
+  ] as ClinicLocation[],
 
-  address: {
-    city: "[شهر]",
-    region: "[استان]",
-    street: "[خیابان، کوچه، پلاک، طبقه، واحد]",
-    postalCode: "[کد پستی]",
-  },
-
-  /** Coordinates for schema.org; leave null until known. */
-  geo: null as { lat: number; lng: number } | null,
-
-  workingHours: [
-    { days: "شنبه تا چهارشنبه", hours: "[۱۰:۰۰ تا ۱۳:۰۰ و ۱۶:۰۰ تا ۲۰:۰۰]" },
-    { days: "پنجشنبه", hours: "[۱۰:۰۰ تا ۱۳:۰۰]" },
-    { days: "جمعه", hours: "تعطیل", closed: true },
-  ] as WorkingHour[],
-
-  /** First item powers the main "مسیریابی" button. */
-  mapLinks: [
-    { label: "گوگل مپ", href: "https://maps.google.com/?q=[آدرس]" },
-    { label: "نشان", href: "https://nshn.ir/" },
-    { label: "بلد", href: "https://balad.ir/" },
-  ] as MapLink[],
+  hoursNote: "برای اطلاع از روزها و ساعات حضور، با درمانگاه مربوطه تماس بگیرید.",
 
   /**
    * Where "دریافت نوبت" points. Use a booking link (e.g. an online booking
@@ -46,17 +46,13 @@ export const contact = {
    */
   appointmentHref: "#contact",
 
-  appointmentNote:
-    "برای دریافت نوبت در ساعات کاری تماس بگیرید یا در واتساپ پیام بگذارید.",
+  appointmentNote: "برای دریافت نوبت با خط کاری تماس بگیرید یا در واتساپ پیام بگذارید.",
 };
 
 export const whatsappHref = `https://wa.me/${contact.whatsappNumber}`;
-export const emailHref = `mailto:${contact.email.replace(/[[\]]/g, "")}`;
 
-export const fullAddress = [
-  contact.address.city,
-  contact.address.street,
-].join("، ");
+/** Short "area · area · area" line used in compact places (hero card). */
+export const locationAreas = contact.locations.map((l) => l.area).join(" · ");
 
 export const socialLinks: SocialLink[] = [
   {
@@ -69,12 +65,6 @@ export const socialLinks: SocialLink[] = [
     id: "whatsapp",
     label: "واتساپ",
     href: whatsappHref,
-    handle: contact.mobile,
-  },
-  {
-    id: "email",
-    label: "ایمیل",
-    href: emailHref,
-    handle: contact.email,
+    handle: contact.phone,
   },
 ];

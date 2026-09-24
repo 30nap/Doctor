@@ -10,57 +10,40 @@ export const timelineCategories: Record<TimelineCategory, string> = {
 };
 
 /**
- * Resume timeline — newest first. All entries below are placeholders.
- * Remove a category's items entirely and its filter chip disappears.
+ * Resume timeline — newest first. `place` and `period` are optional.
+ * A category with no items gets no filter chip.
  */
 export const timeline: TimelineItem[] = [
   {
     id: "work-current",
     category: "work",
-    title: "دندانپزشک",
-    place: "[نام کلینیک یا مطب]، [شهر]",
-    period: "[سال شروع] — اکنون",
-    description: "[شرح کوتاه مسئولیت‌ها و حوزه‌های اصلی درمان.]",
+    title: "دندانپزشک عمومی",
+    place: "درمانگاه نبوی (شهر ری)، کلینیک نسیم (قیطریه)، کلینیک تخصصی دنو (اندرزگو) — تهران",
+    description: "۶ سال سابقه فعالیت در دندانپزشکی عمومی.",
   },
   {
-    id: "work-previous",
-    category: "work",
-    title: "[عنوان سمت]",
-    place: "[نام مرکز درمانی]",
-    period: "[سال] — [سال]",
-    description: "[شرح کوتاه.]",
+    id: "course-wisdom-teeth",
+    category: "course",
+    title: "جراحی تخصصی دندان عقل نهفته",
+  },
+  {
+    id: "course-prosthesis",
+    category: "course",
+    title: "انواع پروتزهای ثابت و متحرک",
+  },
+  {
+    id: "course-complex-endo",
+    category: "course",
+    title: "درمان ریشه پیچیده",
+  },
+  {
+    id: "course-retreatment",
+    category: "course",
+    title: "درمان ریشه مجدد تخصصی",
   },
   {
     id: "edu-dds",
     category: "education",
-    title: "دکترای حرفه‌ای دندانپزشکی",
-  },
-  {
-    id: "course-1",
-    category: "course",
-    title: "[عنوان دوره تخصصی]",
-    place: "[برگزارکننده]",
-    period: "[سال]",
-  },
-  {
-    id: "course-2",
-    category: "course",
-    title: "[عنوان دوره تخصصی]",
-    place: "[برگزارکننده]",
-    period: "[سال]",
-  },
-  {
-    id: "cert-1",
-    category: "certification",
-    title: "[عنوان گواهینامه]",
-    place: "[مرجع صادرکننده]",
-    period: "[سال]",
-  },
-  {
-    id: "achievement-1",
-    category: "achievement",
-    title: "[عنوان دستاورد، مقاله یا ارائه علمی]",
-    place: "[محل یا مجله]",
-    period: "[سال]",
+    title: "دکترای عمومی دندانپزشکی",
   },
 ];

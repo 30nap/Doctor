@@ -1,30 +1,39 @@
-import { contact, emailHref } from "@/data/contact";
+import { contact } from "@/data/contact";
 import { doctor } from "@/data/doctor";
 import { services } from "@/data/services";
 import { site } from "@/data/site";
 import { real } from "@/lib/utils";
 
 /**
- * schema.org JSON-LD for search engines: a `Dentist` (the practice) and the
- * `Person` who runs it. Values that are still [placeholders] are omitted so
- * unfinished data never reaches Google.
+ * schema.org JSON-LD for search engines: the dentist as a `Person` plus one
+ * `Dentist` entry per clinic. Values that are still [placeholders] are
+ * omitted so unfinished data never reaches Google.
  */
 export function buildJsonLd() {
   const personId = `${site.url}/#dentist-person`;
-  const practiceId = `${site.url}/#practice`;
   const telephone = contact.phoneHref.replace("tel:", "");
-  const email = real(contact.email) ? emailHref.replace("mailto:", "") : undefined;
 
-  const address = {
-    "@type": "PostalAddress",
-    addressCountry: "IR",
-    addressLocality: real(contact.address.city),
-    addressRegion: real(contact.address.region),
-    streetAddress: real(contact.address.street),
-    postalCode: real(contact.address.postalCode),
-  };
-
-  const sameAs = [real(contact.instagramHandle) ? contact.instagramUrl : undefined].filter(Boolean);
+  const clinics = contact.locations.map((location, i) => ({
+    "@type": "Dentist",
+    "@id": `${site.url}/#clinic-${i + 1}`,
+    name: location.name,
+    telephone,
+    hasMap: location.mapHref,
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IR",
+      addressRegion: contact.region,
+      addressLocality: contact.city,
+      streetAddress: location.area,
+    },
+    employee: { "@id": personId },
+    medicalSpecialty: "Dentistry",
+    availableService: services.map((s) => ({
+      "@type": "MedicalProcedure",
+      name: s.title,
+      description: s.summary,
+    })),
+  }));
 
   return {
     "@context": "https://schema.org",
@@ -35,34 +44,18 @@ export function buildJsonLd() {
         name: doctor.name,
         alternateName: doctor.nameLatin,
         jobTitle: doctor.title,
-        description: doctor.intro,
-        url: site.url,
-        image: doctor.portrait.src ? `${site.url}${doctor.portrait.src}` : undefined,
-        worksFor: { "@id": practiceId },
-        sameAs: sameAs.length ? sameAs : undefined,
-      },
-      {
-        "@type": "Dentist",
-        "@id": practiceId,
-        name: real(contact.clinicName) ?? doctor.name,
-        url: site.url,
         description: site.seo.description,
+        url: site.url,
         telephone,
-        email,
-        address,
-        geo: contact.geo
-          ? { "@type": "GeoCoordinates", latitude: contact.geo.lat, longitude: contact.geo.lng }
+        image: doctor.portrait.src ? `${site.url}${doctor.portrait.src}` : undefined,
+        identifier: real(doctor.licenseNumber)
+          ? { "@type": "PropertyValue", name: "شماره نظام پزشکی", value: doctor.licenseNumber }
           : undefined,
-        employee: { "@id": personId },
-        medicalSpecialty: "Dentistry",
-        availableService: services.map((s) => ({
-          "@type": "MedicalProcedure",
-          name: s.title,
-          description: s.summary,
-        })),
-        areaServed: real(doctor.city),
-        inLanguage: "fa-IR",
+        workLocation: clinics.map((c) => ({ "@id": c["@id"] })),
+        sameAs: [contact.instagramUrl],
+        knowsLanguage: "fa",
       },
+      ...clinics,
     ],
   };
 }

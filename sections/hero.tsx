@@ -1,6 +1,6 @@
 import { CalendarCheck, MapPin, MessageCircle } from "lucide-react";
 import { doctor } from "@/data/doctor";
-import { contact } from "@/data/contact";
+import { contact, locationAreas } from "@/data/contact";
 import { sectionIds } from "@/data/navigation";
 import { ImageFrame } from "@/components/image-frame";
 import { Button } from "@/components/ui/button";
@@ -63,8 +63,8 @@ export function Hero() {
                 <MapPin className="size-5" aria-hidden />
               </span>
               <span className="leading-tight">
-                <span className="block text-sm font-semibold text-ink">{contact.clinicName}</span>
-                <span className="block text-xs text-muted">{doctor.city}</span>
+                <span className="block text-sm font-semibold text-ink">{doctor.city}</span>
+                <span className="block text-xs text-muted">{locationAreas}</span>
               </span>
             </div>
           </div>
